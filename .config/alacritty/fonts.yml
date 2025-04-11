@@ -1,0 +1,57 @@
+## Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com>
+## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
+
+# Font configuration
+font:
+  # Normal (roman) font face
+  normal:
+    # family: "OpenDyslexicM Nerd Font Mono"
+    family: "CodeNewRoman Nerd Font Mono"
+    #family: "FiraCode Nerd Font"
+    #family: "Monofur Nerd Font Mono"
+    # family: "Mononoki Nerd Font"
+    #family: "Hack Nerd Font Mono"
+    style: Regular
+
+  # Bold font face
+  bold:  
+    # family: "OpenDyslexic Nerd Font"
+    family: "CodeNewRoman Nerd Font Mono"
+    #family: "FiraCode Nerd Font"
+    #family: "Monofurbold Nerd Font Mono"
+    # family: "Mononoki Nerd Font"
+    #family: "Hack Nerd Font Mono"
+    style: Bold
+
+  # Italic font face
+  italic:
+    # family: "OpenDyslexic Nerd Font"
+    family: "CodeNewRoman Nerd Font Mono"
+    #family: "FiraCode Nerd Font"
+    #family: "Monofuritalic Nerd Font Mono"
+    # family: "Mononoki Nerd Font"
+    #family: "Hack"
+    style: Italic
+
+  # Bold italic font face
+  bold_italic:
+    # family: "OpenDyslexic Nerd Font"
+    family: "CodeNewRoman Nerd Font Mono"
+    #family: "FiraCode Nerd Font"
+    #family: "Monofuritalic Nerd Font Mono"
+    # family: "Mononoki Nerd Font"
+    #family: "Hack"
+    style: Bold Italic
+
+  # Point 
+  size: 12.5 
+
+  # Offset
+  offset:
+    x: 0
+    y: 0 # (3 for CodeNewRoman) (-1 for Mononoki)
+
+  # Glyph offset
+  #glyph_offset:
+  #  x: 0
+  #  y: 0
