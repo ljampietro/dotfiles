@@ -1,1 +1,169 @@
 
+#───────────#
+#  Aliases  #
+#───────────#
+alias testfont='bash ~/.scripts/nerdFontTest.sh'
+alias clima='curl https://wttr.in/lauro_de_freitas'
+alias mir='scrcpy -Sw'
+alias ma71='scrcpy -S -t -K --tcpip=192.168.1.119:'
+alias estudos='cd /mnt/ARQUIVO/ESTUDOS'
+# Change cd into gd funcion
+# cool way of changing dirs.
+# function at the end of bashrc
+
+#alias cd='gd'
+
+#Color my grep
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# Changing "ls" to "eza" previously 'exa' but repo was abandoned so community created eza
+#
+alias ls='eza -al --color=always --group-directories-first --icons' # my preferred listing
+alias la='eza -a --color=always --group-directories-first --icons'  # all files and dirs
+alias ll='eza -l --color=always --group-directories-first --icons'  # long format
+alias lt='eza -aT --color=always --group-directories-first --icons' # tree listing
+alias l.='eza -a | egrep "^\."'
+#alias ll='ls -alF'
+#alias la='ls -A'
+#alias l='ls -CF'
+#alias\
+#  tree1='tree -L 1' \
+#  tree2='tree -L 2' \
+#  ls='ls -hN --color=auto --group-directories-first' \
+#  ll='ls -lh' \
+#  lla='ls -alh' \
+#  lsym='ls -l `\find . -maxdepth 1 -type l -print`'
+
+# +----------------------+
+# | my must have aliases |
+# +---------------------+
+alias myzsh='nvim $HOME/.config/zsh/.zshrc'
+alias mybash='nvim $HOME/.bashrc'
+alias aliasrc='nvim ~/.config/zsh/aliasrc'
+alias optionrc='nvim ~/.config/zsh/optionrc'
+alias nv='nvim'
+alias v='nvim'
+alias fonts='fc-cache -f -v'
+alias cdnv='fd . ~/.config/nvim --type f --hidden --no-ignore --exclude .git | fzf | xargs nvim'
+alias updateall='sudo -- sh -c "dnf update && dnf upgrade"'
+alias sz='source ~/.config/zsh/.zshrc' # reload zshrc
+alias btop='bpytop'
+alias q='exit'
+alias updategrub='sudo grub2-mkconfig -o /boot/grub2/grub.cfg'
+alias chux='sudo chmod u+x -v'
+alias chx='chmod +x -v'
+
+alias steam='nohup steam &'
+alias efx='nohup easyeffects --gapplication-service'
+
+## change jack bufferzise to 128
+alias buffer='pw-metadata -n settings 0 clock.force-quantum '
+
+#change alacrittyFontSize
+alias fontsize="bash .scripts/alacrittyFontSize.sh"
+
+# Unpack some shit
+alias untar="tar zxvf "
+
+# Bluetooth connect
+alias bcn='bash ~/.scripts/bcn.sh'
+#FZF
+#
+# upgrade fzf
+alias updatefzf='cd ~/.fzf && git pull && ./install'
+#
+alias fzn='fzf --multi --height=80% --border-label="((Open in Neovim))" --reverse --preview "bat --style=numbers --color=always --line-range :1000 {}" --bind "enter:become(nvim {+})"'
+alias fzp="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+alias fzm='bash $HOME/.scripts/fuzzymenu.sh'
+alias favd='cd $(cat ~/favDirs.txt | fzf --height=100% --margin=10 --padding=1 --border-label="((FavDirs))" )'
+alias fzh="help -d '*' | tail -n+3 | column -t -s'-' | fzf --preview='p={}; help -m $p'"
+
+# confirm before overwriting something and then verbose it because yes.
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias rm='rm -vI'
+alias mkdir='mkdir -pv'
+
+# remove folder RECURSIVELY
+alias rmf='rm -rf'
+
+#show open ports
+alias openports='netstat -nape --inet'
+
+#tmux
+alias tmuxk='tmux kill-session -t'
+alias tmuxa='tmux attach -t'
+alias tmuxl='tmux list-sessions'
+alias muxy='nvim ~/.tmux.conf'
+
+# +--------+
+# |   GIT  |
+# +--------+
+alias gdot='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+alias dotpush='gdot push git@gitlab.com:jampietro/dotfiles.git master'
+alias gds='gdot status'
+alias gda='gbare add '
+alias gdc='gbare com '
+alias gdd='gdot diff '
+alias gdl="gdot log --oneline | fzf --preview '/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME show --color=always {+1} '"
+
+alias gflux='/usr/bin/git --git-dir=$HOME/fluxStuff/ --work-tree=$HOME'
+alias fluxpush='gflux push git@gitlab.com:jampietro/fluxStuff.git master'
+
+# +--------+
+# | Docker |
+# +--------+
+
+alias dockstart='sudo systemctl start docker'
+
+# +---------+
+# | HomeLab |
+# +---------+
+
+alias hal='ssh jampietro@192.168.1.190'
+alias games='ssh jampietro@192.168.1.188'
+alias pie='ssh jampietro@192.168.1.189'
+
+
+alias myip="curl --silent -m 10 https://api.ipify.org | tr -dc '[:alnum:].'"
+alias localip="ip a | grep 'inet 192' | awk '{ print \$2, \$9 }'"
+
+# +--------+
+# | System |
+# +--------+
+
+alias shutdown='sudo shutdown now'
+alias restart='sudo reboot'
+alias suspend='sudo pm-suspend'
+
+# +------------+
+# | Flux stuff |
+# +------------+
+
+#tmux FluxNodes session launcher
+alias fluxnodes='bash $HOME/.scripts/myFluxNodes.sh'
+
+alias nimbus1='ssh alpha@192.168.15.151'
+alias nimbus2='ssh alpha@192.168.15.152'
+
+###---------------------------------------------
+##
+# gbare is a simple function to handle
+# my git bare repo more easilly
+
+gbare() {
+
+	slct=$(gds --porcelain | awk '{print $2}' | fzf -i --no-info --prompt=': ' --height=25% --border=rounded --border-label='╢ Dotfiles Repo ╟' --border-label-pos=bottom --preview='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME diff --color=always {+1} ')
+
+	case "$1" in
+	add)
+		gdot add $slct
+		;;
+	com)
+		gdot commit $slct
+		;;
+	esac
+
+}
