@@ -1,2 +1,4 @@
-after install, copy preset files to this folder:
-.var/app/com.github.wwmm.easyeffects/config/easyeffects/output/
+after flatpak install, copy preset files to this folder:
+~/.var/app/com.github.wwmm.easyeffects/config/easyeffects/output/
+if install via distro package then:
+~/.config/easyeffects/output/
